@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+
+  <!-- Acceder a la librería Vue desde CDN -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script> -->
+
+  <!-- Acceder a Vue localmente -->
+  <script src="./vue.js"> </script>
+
+  <script>
+    (function () {
+      // Cada aplicación de Vue empieza con la creación de una nueva instancia de Vue con la función Vue
+      let vm = new Vue({
+        //opcciones 
+        //el: Indica que parte del DOM estara bajo el control de la instancia de Vue
+        el: '#app',
+        //data: Agrega todas las propiedades encontradas dentro al sistema de reactividad de Vue
+        data: {
+          title: 'Hello World'
+        }
+      });
+    }());
+  </script>
+</body>
+
+</html>

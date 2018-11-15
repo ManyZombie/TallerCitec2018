@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- Esta directiva solo renderiza el valor incial, no detecta cambios posteriores -->
+    <h1 v-once> {{ title }} </h1>
+    <!--  Se usa la directiva v-bind para enlazar atributos-->
+    <p> {{ sayHello() }} - <a v-bind:href="link">Google</a> </p>
+
+    <!-- Renderiza el html contenido en la cadena Nota: debe usar con precación ya que puede deja vulnerable a cross-site attacks (XSS) -->
+    <p v-html='finishedLink'></p>
+  </div>
+
+  <!-- Acceder a la librería Vue desde CDN -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script> -->
+  <!-- Acceder a Vue localmente -->
+  <script src="./vue.js"> </script>
+
+  <script>
+    // Cada aplicación de Vue empieza con la creación de una nueva instancia de Vue con la función Vue
+    let vm = new Vue({
+      //opcciones 
+      //el: Indica que parte del DOM estará bajo el control de la instancia de Vue
+      el: '#app',
+      //data: Agrega todas las propiedades encontradas dentro al sistema de reactividad de Vue
+      data: {
+        title: 'Hello World', 
+        link: 'http://google.com',
+        finishedLink: '<a href="http://google.com"> Google </a>'
+      },
+      //methods: Métodos relacionados con la instancia actual de Vue
+      methods: {
+        //Método que retorna la variable title del objeto data dentro de la intancia de Vue
+        sayHello: function() {
+          this.title = 'Hello';
+          return this.title;
+        } 
+      }
+    });
+  </script>
+</body>
+
+</html>

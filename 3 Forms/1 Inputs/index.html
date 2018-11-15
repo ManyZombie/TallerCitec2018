@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>Texfield</h1>
+    <input v-model="textfield" placeholder="edit me">
+    <p>Message is: {{ textfield }}</p>
+
+    <h1>Texarea</h1>
+    <span>Multiline message is:</span>
+    <p style="white-space: pre-line;">{{ textarea }}</p>
+    <br>
+    <textarea v-model="textarea" placeholder="add multiple lines"></textarea>
+
+    <h1>Checkbox</h1>
+    <input type="checkbox" id="checkbox" v-model="checkbox">
+    <label for="checkbox">{{ checkbox }}</label>
+
+    <h1>Multiple checkbox</h1>
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames }}</span>
+
+    <h1>Radio Button</h1>
+    <input type="radio" id="one" value="One" v-model="radio">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="radio">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ radio }}</span>
+
+    <h1>Select</h1>
+    <select v-model="select">
+      <option disabled value="">Please select one</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ select }}</span>
+
+    <h1>Multiple select</h1>
+    <select v-model="selections" multiple>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selections }}</span>
+
+    <h1>Select alternative</h1>
+    <select v-model="selected">
+      <option v-for="option in options" v-bind:value="option.value">
+        {{ option.text }}
+      </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+  </div>
+
+  <!-- Acceder a la librería Vue desde CDN -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"> </script> -->
+
+  <!-- Acceder a Vue localmente -->
+  <script src="./vue.js"> </script>
+
+  <script>
+    (function () {
+      // Cada aplicación de Vue empieza con la creación de una nueva instancia de Vue con la función Vue
+      let vm = new Vue({
+        //opcciones 
+        //el: Indica que parte del DOM estara bajo el control de la instancia de Vue
+        el: '#app',
+        //data: Agrega todas las propiedades encontradas dentro al sistema de reactividad de Vue
+        data: {
+          textfield: '',
+          textarea: '',
+          checkbox: false,
+          checkedNames: [],
+          radio: '',
+          select: '',
+          selections: '',
+          selected: 'A',
+          options: [{
+              text: 'One',
+              value: 'A'
+            },
+            {
+              text: 'Two',
+              value: 'B'
+            },
+            {
+              text: 'Three',
+              value: 'C'
+            }
+          ]
+        }
+      });
+    }());
+  </script>
+</body>
+
+</html>
